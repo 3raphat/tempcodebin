@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import Editor, { type Monaco } from "@monaco-editor/react"
 import { SettingBar } from "~/components/setting-bar"
 import {
@@ -67,7 +67,7 @@ export function CodeEditor() {
 
   const isSaveButtonDisable = isTooLong || isTooShort || createCode.isLoading
 
-  const handleSave = () => {
+  const handleSave = useCallback(() => {
     toast.promise(
       createCode.mutateAsync({
         code: value,
@@ -80,12 +80,24 @@ export function CodeEditor() {
         error: "Failed to save code",
       }
     )
-  }
+  }, [createCode, duration, language, value])
 
   useEffect(() => {
     setIsTooLong(value.length > 10000)
     setIsTooShort(value.length === 0)
   }, [value])
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "s" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        if (isSaveButtonDisable) return
+        handleSave()
+      }
+    }
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
+  }, [handleSave, isSaveButtonDisable])
 
   return (
     <>
