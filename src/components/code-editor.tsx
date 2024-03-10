@@ -12,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "~/components/ui/dialog"
-import { defaultCode } from "~/config"
+import { defaultJsCode } from "~/config"
 import { cn, getUrlWithoutProtocal } from "~/lib/utils"
 import useSettingStore from "~/stores/setting"
 import { api } from "~/trpc/react"
@@ -29,7 +29,7 @@ import { Skeleton } from "./ui/skeleton"
 export function CodeEditor() {
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null)
   const { language, setAllLanguagesSupported, duration } = useSettingStore()
-  const [value, setValue] = useState(defaultCode)
+  const [value, setValue] = useState(defaultJsCode)
 
   function handleEditorWillMount(monaco: Monaco) {
     monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true)
@@ -151,7 +151,7 @@ export function CodeEditor() {
         value={value}
         defaultLanguage="javascript"
         language={language}
-        defaultValue={defaultCode}
+        defaultValue={defaultJsCode}
         onMount={handleEditorDidMount}
         beforeMount={handleEditorWillMount}
         theme="vs-dark"

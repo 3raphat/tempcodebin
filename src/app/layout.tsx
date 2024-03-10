@@ -3,6 +3,7 @@ import "~/styles/globals.css"
 import { JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { Toaster } from "~/components/ui/sonner"
+import { url } from "~/config"
 import { cn } from "~/lib/utils"
 import { TRPCReactProvider } from "~/trpc/react"
 
@@ -18,7 +19,43 @@ export const metadata = {
   },
   description:
     "A temporary storage and sharing platform for code snippets with others.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  keywords: ["code", "snippet", "temp", "temporary", "bin", "share", "storage"],
+  metadataBase: new URL(url),
+  openGraph: {
+    title: "TempCodeBin - Share Code Snippets with Others",
+    description:
+      "A temporary storage and sharing platform for code snippets with others.",
+    url: url,
+    type: "website",
+    locale: "en_US",
+    siteName: "TempCodeBin",
+    images: [
+      {
+        url: `${url}/api/og`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    title: "TempCodeBin",
+    description:
+      "A temporary storage and sharing platform for code snippets with others.",
+    card: "summary_large_image",
+    images: [
+      {
+        url: `${url}/api/og`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: `${url}/site.webmanifest`,
 }
 
 export default function RootLayout({

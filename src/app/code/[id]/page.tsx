@@ -4,6 +4,7 @@ import { CodePreview } from "~/components/code-preview"
 import { CopyButton } from "~/components/copy-button"
 import { Button } from "~/components/ui/button"
 import { Spotlight } from "~/components/ui/spotlight"
+import { url } from "~/config"
 import { cn } from "~/lib/utils"
 import { api } from "~/trpc/server"
 import { AlertTriangle, FilePlus } from "lucide-react"
@@ -24,8 +25,33 @@ export async function generateMetadata({ params }: Props) {
     }
   }
 
+  const ogUrl = new URL(`${url}/api/og`)
+  ogUrl.searchParams.set("id", id)
+
   return {
-    title: id + "'s code",
+    title: "Code's " + id,
+    openGraph: {
+      title: "Code's " + id,
+      url: `${url}/code/${id}`,
+      images: [
+        {
+          url: ogUrl.toString(),
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    twitter: {
+      title: "Code's " + id,
+      card: "summary_large_image",
+      images: [
+        {
+          url: ogUrl.toString(),
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
   }
 }
 
