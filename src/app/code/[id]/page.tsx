@@ -50,7 +50,7 @@ export default async function Page({ params }: Props) {
         fill="rgb(103 232 249)"
       />
       <div className="mx-auto flex size-full max-w-fit flex-col items-center justify-center px-4 md:w-3/4 md:min-w-[776px]">
-        <a
+        <p
           className={cn(
             "mb-2 inline-flex items-center justify-center place-self-end rounded-xl border bg-muted/50 px-2 text-sm text-muted-foreground",
             targetCode.duration === "after-view" &&
@@ -68,7 +68,7 @@ export default async function Page({ params }: Props) {
               {updateViews.views > 1 ? "s" : ""}
             </span>
           )}
-        </a>
+        </p>
 
         <CodePreview code={targetCode.code} lang={targetCode.language} />
         <div className="mt-4 flex w-full flex-col items-center justify-center gap-2 sm:flex-row">
