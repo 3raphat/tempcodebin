@@ -2,10 +2,11 @@ import "~/styles/globals.css"
 
 import { JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
-import { Toaster } from "~/components/ui/sonner"
 import { url } from "~/config"
-import { cn } from "~/lib/utils"
 import { TRPCReactProvider } from "~/trpc/react"
+
+import { cn } from "~/lib/utils"
+import { Toaster } from "~/components/ui/sonner"
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],

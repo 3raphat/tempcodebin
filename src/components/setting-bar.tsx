@@ -1,6 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import useSettingStore, { type Duration } from "~/stores/setting"
+import { Check, ChevronsUpDown } from "lucide-react"
+import { toast } from "sonner"
+
+import { cn } from "~/lib/utils"
 import { Button } from "~/components/ui/button"
 import {
   Command,
@@ -16,10 +21,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover"
-import { cn } from "~/lib/utils"
-import useSettingStore, { type Duration } from "~/stores/setting"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { toast } from "sonner"
 
 import {
   Select,

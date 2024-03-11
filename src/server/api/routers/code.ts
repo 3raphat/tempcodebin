@@ -1,6 +1,7 @@
-import { nanoid } from "~/lib/utils"
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc"
 import { z } from "zod"
+
+import { nanoid } from "~/lib/utils"
 
 export const codeRouter = createTRPCRouter({
   create: publicProcedure

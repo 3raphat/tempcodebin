@@ -1,13 +1,14 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { CodePreview } from "~/components/code-preview"
-import { CopyButton } from "~/components/copy-button"
-import { Button } from "~/components/ui/button"
-import { Spotlight } from "~/components/ui/spotlight"
 import { url } from "~/config"
-import { cn } from "~/lib/utils"
 import { api } from "~/trpc/server"
 import { AlertTriangle, FilePlus } from "lucide-react"
+
+import { cn } from "~/lib/utils"
+import { Button } from "~/components/ui/button"
+import { Spotlight } from "~/components/ui/spotlight"
+import { CodePreview } from "~/components/code-preview"
+import { CopyButton } from "~/components/copy-button"
 
 type Props = {
   params: {
@@ -72,7 +73,7 @@ export default async function Page({ params }: Props) {
   return (
     <div className="noise relative h-screen w-screen overflow-hidden">
       <Spotlight
-        className="-top-40 left-0 md:-top-20 md:left-60 "
+        className="-top-40 left-0 md:-top-20 md:left-60"
         fill="rgb(103 232 249)"
       />
       <div className="mx-auto flex size-full max-w-fit flex-col items-center justify-center px-4 md:w-3/4 md:min-w-[776px]">

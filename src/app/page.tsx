@@ -1,7 +1,8 @@
 import { unstable_noStore as noStore } from "next/cache"
 import dynamic from "next/dynamic"
-import { CodeEditor } from "~/components/code-editor"
+
 import { Spotlight } from "~/components/ui/spotlight"
+import { CodeEditor } from "~/components/code-editor"
 
 const WelcomeModal = dynamic(() => import("~/components/welcome-modal"), {
   ssr: false,

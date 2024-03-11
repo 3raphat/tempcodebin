@@ -2,7 +2,15 @@
 
 import { useCallback, useEffect, useRef, useState } from "react"
 import Editor, { type Monaco } from "@monaco-editor/react"
-import { SettingBar } from "~/components/setting-bar"
+import { defaultJsCode } from "~/config"
+import useSettingStore from "~/stores/setting"
+import { api } from "~/trpc/react"
+import confetti from "canvas-confetti"
+import { Loader2 } from "lucide-react"
+import { type editor } from "monaco-editor"
+import { toast } from "sonner"
+
+import { cn, getUrlWithoutProtocal } from "~/lib/utils"
 import {
   Dialog,
   DialogClose,
@@ -12,14 +20,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "~/components/ui/dialog"
-import { defaultJsCode } from "~/config"
-import { cn, getUrlWithoutProtocal } from "~/lib/utils"
-import useSettingStore from "~/stores/setting"
-import { api } from "~/trpc/react"
-import confetti from "canvas-confetti"
-import { Loader2 } from "lucide-react"
-import { type editor } from "monaco-editor"
-import { toast } from "sonner"
+import { SettingBar } from "~/components/setting-bar"
 
 import { CopyButton } from "./copy-button"
 import { Button } from "./ui/button"
