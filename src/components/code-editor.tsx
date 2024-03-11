@@ -132,6 +132,8 @@ export function CodeEditor() {
       <Editor
         className="border"
         options={{
+          tabSize: 2,
+          insertSpaces: false,
           bracketPairColorization: {
             enabled: true,
             independentColorPoolPerBracketType: true,
