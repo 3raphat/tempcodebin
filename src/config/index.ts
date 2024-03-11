@@ -2,16 +2,16 @@ import { env } from "~/env"
 
 export const defaultJsCode = `// Define a class called Person
 class Person {
-    // Constructor
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    
-    // Method to get the full name
-    getFullName() {
-        return \`\${this.firstName} \${this.lastName}\`;
-    }
+  // Constructor
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  // Method to get the full name
+  getFullName() {
+    return \`\${this.firstName} \${this.lastName}\`;
+  }
 }
 
 // Create an instance of Person
