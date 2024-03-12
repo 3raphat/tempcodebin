@@ -8,6 +8,7 @@ import { api } from "~/trpc/react"
 import confetti from "canvas-confetti"
 import { Loader2 } from "lucide-react"
 import { type editor } from "monaco-editor"
+import { type Session } from "next-auth"
 import { toast } from "sonner"
 
 import { cn, getUrlWithoutProtocal } from "~/lib/utils"
@@ -27,7 +28,11 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Skeleton } from "./ui/skeleton"
 
-export function CodeEditor() {
+interface CodeEditorProps {
+  session: Session | null
+}
+
+export function CodeEditor({ session }: CodeEditorProps) {
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null)
   const { language, setAllLanguagesSupported, duration } = useSettingStore()
   const [value, setValue] = useState(defaultJsCode)
@@ -103,7 +108,7 @@ export function CodeEditor() {
   return (
     <>
       <div className="mb-2 flex flex-col items-end justify-between gap-2 sm:flex-row">
-        <SettingBar />
+        <SettingBar session={session} />
         <button
           disabled={isSaveButtonDisable}
           onClick={handleSave}
@@ -113,7 +118,7 @@ export function CodeEditor() {
           )}
         >
           <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-          <span className="inline-flex size-full items-center justify-center rounded-md bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+          <span className="inline-flex size-full items-center justify-center rounded-md bg-slate-950 px-3 py-1 text-sm font-medium text-zinc-50 backdrop-blur-3xl">
             {createCode.isLoading ? (
               <>
                 <Loader2 className="mr-2 size-4 animate-spin" />

@@ -9,7 +9,7 @@ export async function GET() {
     const expiredCodes = []
 
     for (const code of codes) {
-      if (code.duration === "after-view") continue // no need to check duration for these
+      if (code.duration === "after-view" || code.duration === "never") continue // no need to check duration for these
       if (
         new Date(code.createdAt).getTime() + ms(String(code.duration)) <
         new Date().getTime()

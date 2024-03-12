@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import useSettingStore, { type Duration } from "~/stores/setting"
 import { Check, ChevronsUpDown } from "lucide-react"
+import { type Session } from "next-auth"
 import { toast } from "sonner"
 
 import { cn } from "~/lib/utils"
@@ -30,7 +31,11 @@ import {
   SelectValue,
 } from "./ui/select"
 
-export function SettingBar() {
+interface SettingBarProps {
+  session: Session | null
+}
+
+export function SettingBar({ session }: SettingBarProps) {
   const {
     language,
     setLanguage,
@@ -48,6 +53,7 @@ export function SettingBar() {
     { display: "1 day", value: "1d" },
     { display: "1 week", value: "1w" },
     { display: "After view", value: "after-view" },
+    { display: "Never", value: "never" },
   ]
 
   useEffect(() => {
@@ -124,7 +130,11 @@ export function SettingBar() {
           </SelectTrigger>
           <SelectContent>
             {times.map((time) => (
-              <SelectItem key={time.value} value={time.value}>
+              <SelectItem
+                key={time.value}
+                value={time.value}
+                disabled={time.value === "never" && !session}
+              >
                 {time.display}
               </SelectItem>
             ))}

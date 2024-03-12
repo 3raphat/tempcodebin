@@ -19,6 +19,7 @@ export const codeRouter = createTRPCRouter({
           code: input.code,
           language: input.language,
           duration: input.duration,
+          createdById: ctx.session?.user.id,
         },
       })
     }),

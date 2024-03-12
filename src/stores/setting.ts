@@ -5,7 +5,14 @@ type LanguagesSupported = {
   name: string
 }
 
-export type Duration = "5m" | "10m" | "1h" | "1d" | "1w" | "after-view"
+export type Duration =
+  | "5m"
+  | "10m"
+  | "1h"
+  | "1d"
+  | "1w"
+  | "after-view"
+  | "never"
 
 interface SettingState {
   allLanguagesSupported: LanguagesSupported[]
