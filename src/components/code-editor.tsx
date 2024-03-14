@@ -21,6 +21,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "~/components/ui/dialog"
+import { QRCodeModal } from "~/components/qrcode-modal"
 import { SettingBar } from "~/components/setting-bar"
 
 import { CopyButton } from "./copy-button"
@@ -189,7 +190,8 @@ export function CodeEditor({ session }: CodeEditorProps) {
                 readOnly
               />
             </div>
-            <CopyButton valueToCopy={codeLink} />
+            <CopyButton valueToCopy={codeLink} size="icon" className="size-9" />
+            <QRCodeModal value={codeLink} />
           </div>
           <DialogFooter className="sm:justify-start">
             <DialogClose asChild>

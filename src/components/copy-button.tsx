@@ -4,9 +4,9 @@ import confetti from "canvas-confetti"
 import { Copy, CopyCheck } from "lucide-react"
 import useClipboard from "react-use-clipboard"
 
-import { Button } from "./ui/button"
+import { Button, type ButtonProps } from "./ui/button"
 
-interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface CopyButtonProps extends ButtonProps {
   valueToCopy: string
   textOnButton?: string
   textWhenCopied?: string
