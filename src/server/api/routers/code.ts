@@ -1,4 +1,8 @@
-import { createTRPCRouter, publicProcedure } from "~/server/api/trpc"
+import {
+  createTRPCRouter,
+  protectedProcedure,
+  publicProcedure,
+} from "~/server/api/trpc"
 import { z } from "zod"
 
 import { nanoid } from "~/lib/utils"
@@ -26,6 +30,14 @@ export const codeRouter = createTRPCRouter({
 
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.db.code.findMany()
+  }),
+
+  getAllByUser: protectedProcedure.query(({ ctx }) => {
+    return ctx.db.code.findMany({
+      where: {
+        createdById: ctx.session.user.id,
+      },
+    })
   }),
 
   getFromId: publicProcedure

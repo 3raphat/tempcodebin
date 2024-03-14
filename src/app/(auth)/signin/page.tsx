@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import { signIn } from "next-auth/react"
 import { toast } from "sonner"
@@ -17,6 +17,7 @@ import {
 
 export default function Page() {
   const [loading, setLoading] = useState(false)
+  const router = useRouter()
 
   async function handleSignIn() {
     setLoading(true)
@@ -42,10 +43,10 @@ export default function Page() {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex w-full justify-between">
-        <Button variant="ghost" asChild>
-          <Link href="/">Return</Link>
+        <Button size="sm" variant="ghost" onClick={() => router.back()}>
+          Return
         </Button>
-        <Button onClick={handleSignIn} disabled={loading}>
+        <Button size="sm" onClick={handleSignIn} disabled={loading}>
           <span className="sr-only">Sign in with GitHub</span>
           {loading ? (
             <Loader2 className="mr-2 size-4 animate-spin" />

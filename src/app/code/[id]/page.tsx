@@ -92,7 +92,7 @@ export default async function Page({ params }: Props) {
           ) : (
             <span>
               <span className="font-bold">{updateViews.views}</span> view
-              {updateViews.views > 1 ? "s" : ""}
+              {updateViews.views === 1 ? "" : "s"}
             </span>
           )}
         </p>

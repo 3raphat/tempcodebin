@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Loader2, LogOut } from "lucide-react"
 import { signOut } from "next-auth/react"
 import { toast } from "sonner"
@@ -17,6 +17,7 @@ import {
 
 export default function Page() {
   const [loading, setLoading] = useState(false)
+  const router = useRouter()
 
   async function handleSignOut() {
     setLoading(true)
@@ -42,10 +43,10 @@ export default function Page() {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex w-full justify-between">
-        <Button variant="ghost" asChild>
-          <Link href="/">No, I want to stay</Link>
+        <Button size="sm" variant="ghost" onClick={() => router.back()}>
+          No, I want to stay
         </Button>
-        <Button onClick={handleSignOut} disabled={loading}>
+        <Button size="sm" onClick={handleSignOut} disabled={loading}>
           <span className="sr-only">Sign out</span>
           {loading ? (
             <Loader2 className="mr-2 size-4 animate-spin" />

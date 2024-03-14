@@ -16,7 +16,6 @@ const config = {
     "tailwindcss/no-custom-classname": "off",
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
-
     "@typescript-eslint/consistent-type-imports": [
       "warn",
       {

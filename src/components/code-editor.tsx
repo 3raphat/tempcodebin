@@ -114,7 +114,7 @@ export function CodeEditor({ session }: CodeEditorProps) {
           disabled={isSaveButtonDisable}
           onClick={handleSave}
           className={cn(
-            "relative inline-flex h-10 w-full overflow-hidden rounded-md p-[1px] focus:outline-none sm:w-auto",
+            "relative inline-flex h-10 w-full overflow-hidden rounded-md p-px focus:outline-none sm:w-auto",
             isSaveButtonDisable && "cursor-not-allowed"
           )}
         >
