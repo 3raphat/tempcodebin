@@ -90,7 +90,7 @@ export function CodeEditor({ session }: CodeEditorProps) {
   }, [createCode, duration, language, value])
 
   useEffect(() => {
-    setIsTooLong(value.length > 10000)
+    setIsTooLong(value.length > 50000)
     setIsTooShort(value.length === 0)
   }, [value])
 
